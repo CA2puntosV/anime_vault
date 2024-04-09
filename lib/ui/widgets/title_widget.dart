@@ -12,9 +12,8 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-        top: 33,
-        left: 16,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
       ),
       child: Text.rich(
         TextSpan(
@@ -23,10 +22,7 @@ class TitleWidget extends StatelessWidget {
               text: text,
               style: AppTextStyles.title,
             ),
-            const TextSpan(
-              text: '.',
-              style: AppTextStyles.dot
-            ),
+            const TextSpan(text: '.', style: AppTextStyles.dot),
           ],
         ),
       ),

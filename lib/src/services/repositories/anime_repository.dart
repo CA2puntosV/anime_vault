@@ -25,7 +25,28 @@ class AnimeRepository {
 
       return topAnime;
     } catch (e) {
-      print('ERROR $e');
+      return [];
+    }
+  }
+
+  Future<List<AnimeModel>> getAnimeList() async {
+    try {
+      final List<AnimeModel> animeList = [];
+
+      final response = await _apiHelper.get(
+        path: Endpoints.animeList,
+      );
+
+      final jsonData = json.decode(response.body);
+
+      if (response.body.isNotEmpty) {
+        for (final animes in jsonData['data']) {
+          animeList.add(AnimeModel.fromJson(animes));
+        }
+      }
+
+      return animeList;
+    } catch (e) {
       return [];
     }
   }
