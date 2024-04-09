@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:anime_vault/ui/views/home_screen.dart';
+import 'package:anime_vault/ui/router/router_path.dart';
+import 'package:anime_vault/src/providers/home_provider.dart';
+
 Route<dynamic> generateRoute(RouteSettings settings) {
   // final args = settings.arguments;
 
@@ -10,14 +16,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     //     builder: (context) => const SizedBox(),
     //   );
 
-    // case RouterPath.homeRoute:
-    //   return _buildRoute(
-    //     settings: settings,
-    //     builder: ChangeNotifierProvider(
-    //       create: (_) => HomeBloc(),
-    //       child: const HomeScreen(),
-    //     ),
-    //   );
+    case RouterPath.home:
+      return _buildRoute(
+        settings: settings,
+        builder: ChangeNotifierProvider(
+          create: (_) => HomeProvider(),
+          child: const HomeScreen(),
+        ),
+      );
 
     default:
       return _errorRoute();
