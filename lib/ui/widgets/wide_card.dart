@@ -85,30 +85,34 @@ class _AnimeInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          animeModel.title,
-          style: AppTextStyles.subtitle,
-        ),
-        Row(
-          children: [
-            //TODO remove weight
-            //TODO if num in left is 0 remove it
-            Text(
-              '${animeModel.score}',
-              style: AppTextStyles.subtitle,
-            ),
-            9.0.spaceH,
-            //TODO stars
-          ],
-        )
-      ],
+    return SizedBox(
+      width: 300,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            animeModel.title,
+            style: AppTextStyles.subtitle,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
+          Row(
+            children: [
+              //TODO remove weight
+              //TODO if num in left is 0 remove it
+              Text(
+                '${animeModel.score}',
+                style: AppTextStyles.subtitle,
+              ),
+              9.0.spaceH,
+              //TODO stars
+            ],
+          )
+        ],
+      ),
     );
   }
 }
-
 
 class _Image extends StatelessWidget {
   const _Image({

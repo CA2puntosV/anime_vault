@@ -1,12 +1,14 @@
-import 'package:anime_vault/src/models/anime_model.dart';
-import 'package:anime_vault/src/providers/home_provider.dart';
-import 'package:anime_vault/ui/shared/app_colors.dart';
-import 'package:anime_vault/ui/shared/app_strings.dart';
-import 'package:anime_vault/ui/shared/ui_helpers.dart';
-import 'package:anime_vault/ui/widgets/title_widget.dart';
-import 'package:anime_vault/ui/widgets/wide_card.dart';
+import 'package:anime_vault/ui/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
+
+import 'package:anime_vault/ui/shared/app_colors.dart';
+import 'package:anime_vault/ui/widgets/wide_card.dart';
+import 'package:anime_vault/ui/shared/app_strings.dart';
+import 'package:anime_vault/src/models/anime_model.dart';
+import 'package:anime_vault/ui/widgets/title_widget.dart';
+import 'package:anime_vault/src/providers/home_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,25 +17,39 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 20,
-                ),
-                child: TitleWidget(
-                  text: AppStrings.topFive,
-                ),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 20,
+                    ),
+                    child: TitleWidget(
+                      text: AppStrings.topFive,
+                    ),
+                  ),
+                  _TopAnime(),
+                  _TopAnime(),
+                  _TopAnime(),
+                  _TopAnime(),
+                  _TopAnime(),
+                  _TopAnime(),
+                  _TopAnime(),
+                  _TopAnime(),
+                  SizedBox(),
+                ],
               ),
-              _TopAnime(),
-              SizedBox(),
-            ],
+            ),
           ),
-        ),
+          Positioned(
+            child: BottomNavBar(),
+          ),
+        ],
       ),
     );
   }
