@@ -21,7 +21,7 @@ class AppTextStyles {
   static const TextStyle dot = TextStyle(
     fontFamily: font,
     fontSize: 30,
-    color: AppColors.mainColor,
+    color: AppColors.primary,
     fontWeight: FontWeight.bold,
   );
 
@@ -29,6 +29,25 @@ class AppTextStyles {
     fontFamily: font,
     fontSize: 25,
     fontWeight: FontWeight.bold,
-    color: AppColors.mainColor,
+    color: AppColors.primary,
+  );
+
+  static const TextStyle primaryTextButton = TextStyle(
+    fontFamily: font,
+    fontSize: 16,
+    color: AppColors.primary,
+  );
+
+  static const TextStyle smallbold = TextStyle(
+    fontFamily: font,
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+  );
+
+  static const TextStyle synopsis = TextStyle(
+    fontFamily: font,
+    fontSize: 13,
+    color: AppColors.grey,
   );
 }

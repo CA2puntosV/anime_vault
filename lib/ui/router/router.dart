@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:anime_vault/ui/views/home_screen.dart';
+import 'package:anime_vault/ui/views/home/home_screen.dart';
 import 'package:anime_vault/ui/router/router_path.dart';
 import 'package:anime_vault/src/providers/home_provider.dart';
 
