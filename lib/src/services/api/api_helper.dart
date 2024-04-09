@@ -18,7 +18,7 @@ class ApiHelper {
     required String path,
     int? id,
   }) async {
-    final uri = Uri.parse('');
+    final uri = Uri.parse(path);
 
     final http.Response response = await http.get(
       uri,

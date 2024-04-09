@@ -5,16 +5,30 @@ class AppTextStyles {
   static const String font = 'Poppins';
 
   static const TextStyle title = TextStyle(
-    color: AppColors.white,
     fontFamily: font,
     fontSize: 30,
+    color: AppColors.white,
     fontWeight: FontWeight.bold,
   );
 
+  static const TextStyle subtitle = TextStyle(
+    fontFamily: font,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+  );
+
   static const TextStyle dot = TextStyle(
-    color: AppColors.mainColor,
     fontFamily: font,
     fontSize: 30,
+    color: AppColors.mainColor,
     fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle rank = TextStyle(
+    fontFamily: font,
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+    color: AppColors.mainColor,
   );
 }

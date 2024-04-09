@@ -1,9 +1,12 @@
+import 'package:anime_vault/src/models/anime_model.dart';
+import 'package:anime_vault/src/providers/home_provider.dart';
 import 'package:anime_vault/ui/shared/app_colors.dart';
 import 'package:anime_vault/ui/shared/app_strings.dart';
 import 'package:anime_vault/ui/shared/ui_helpers.dart';
 import 'package:anime_vault/ui/widgets/title_widget.dart';
 import 'package:anime_vault/ui/widgets/wide_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,20 +45,25 @@ class _TopAnime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(left: 16),
       height: 300,
       // color: Colors.red,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (_, index) {
-          return Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              16.0.spaceH,
-              const WideCard(),
-              const WideCard(),
-            ],
-          );
-        },
+      child: Selector<HomeProvider, List<AnimeModel>>(
+        selector: (_, bloc) => bloc.topAnime,
+        builder: (_, list, __) => ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: list.length,
+          itemBuilder: (_, index) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                WideCard(
+                  animeModel: list[index],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
