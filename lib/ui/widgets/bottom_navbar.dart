@@ -33,6 +33,10 @@ class BottomNavBar extends StatelessWidget {
             icon: AppIcons.bookmarkOutline,
             func: () {},
           ),
+          _Icon(
+            icon: AppIcons.homeOutline,
+            func: () {},
+          ),
         ],
       ),
     );
