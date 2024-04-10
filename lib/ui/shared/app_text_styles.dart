@@ -18,6 +18,13 @@ class AppTextStyles {
     color: AppColors.white,
   );
 
+  static const TextStyle description = TextStyle(
+    fontFamily: font,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: AppColors.grey,
+  );
+
   static const TextStyle dot = TextStyle(
     fontFamily: font,
     fontSize: 30,

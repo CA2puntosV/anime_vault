@@ -1,3 +1,6 @@
+import 'package:anime_vault/src/models/anime_model.dart';
+import 'package:anime_vault/ui/views/details/details_screen.dart';
+import 'package:anime_vault/ui/views/init/init_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -8,7 +11,7 @@ import 'package:anime_vault/ui/router/router_path.dart';
 import 'package:anime_vault/src/providers/home_provider.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
-  // final args = settings.arguments;
+  final args = settings.arguments;
 
   switch (settings.name) {
     // case RouterPath.splashRoute:
@@ -16,12 +19,34 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     //     builder: (context) => const SizedBox(),
     //   );
 
+    case RouterPath.init:
+      return _buildRoute(
+        settings: settings,
+        builder: ChangeNotifierProvider(
+          create: (_) => HomeProvider(),
+          child: const InitScreen(),
+        ),
+      );
+
     case RouterPath.home:
       return _buildRoute(
         settings: settings,
         builder: ChangeNotifierProvider(
           create: (_) => HomeProvider(),
           child: const HomeScreen(),
+        ),
+      );
+
+    case RouterPath.details:
+      final map = args as Map;
+
+      return _buildRoute(
+        settings: settings,
+        builder: ChangeNotifierProvider(
+          create: (_) => HomeProvider(),
+          child: DetailsScreen(
+            anime: map['anime'] as AnimeModel,
+          ),
         ),
       );
 

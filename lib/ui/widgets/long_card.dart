@@ -1,10 +1,10 @@
-import 'package:anime_vault/src/models/anime_model.dart';
-import 'package:anime_vault/ui/shared/app_text_styles.dart';
-import 'package:anime_vault/ui/shared/ui_helpers.dart';
-import 'package:anime_vault/ui/widgets/anime_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:anime_vault/ui/shared/ui_helpers.dart';
+import 'package:anime_vault/ui/widgets/anime_card.dart';
+import 'package:anime_vault/src/models/anime_model.dart';
+import 'package:anime_vault/ui/widgets/star_rating.dart';
+import 'package:anime_vault/ui/shared/app_text_styles.dart';
 class LongCard extends StatelessWidget {
   const LongCard({
     super.key,
@@ -65,7 +65,10 @@ class _AnimeInfo extends StatelessWidget {
                   style: AppTextStyles.subtitle,
                 ),
                 9.0.spaceH,
-                //TODO stars
+                StarRating(
+                  rating: animeModel.score,
+                  size: 18,
+                ),
               ],
             ),
             8.0.spaceV,

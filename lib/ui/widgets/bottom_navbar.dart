@@ -33,10 +33,6 @@ class BottomNavBar extends StatelessWidget {
             icon: AppIcons.bookmarkOutline,
             func: () {},
           ),
-          _Icon(
-            icon: AppIcons.homeOutline,
-            func: () {},
-          ),
         ],
       ),
     );
@@ -62,7 +58,7 @@ class _Icon extends StatelessWidget {
       child: GestureDetector(
         onTap: func,
         child: Image.asset(
-         icon,
+          icon,
         ),
       ),
     );
