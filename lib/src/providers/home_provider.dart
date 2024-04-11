@@ -8,10 +8,10 @@ class HomeProvider extends ChangeNotifier {
     getTopAnime();
     getAnimeList();
   }
+  final AnimeRepository _animeRepo = AnimeRepository();
+
   List<AnimeModel> topAnime = [];
   List<AnimeModel> animeList = [];
-
-  final AnimeRepository _animeRepo = AnimeRepository();
 
   void getTopAnime() async {
     topAnime = await _animeRepo.getTopAnime();

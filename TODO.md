@@ -1,9 +1,16 @@
 1. Import bold poppins font
 2. Improve responses
-3. add custom images loader
+3. responsive
 4. logic to add favorites
 4. stars iamges not icons
-5. generic cachedImage widget
-6. blur background
+6. gradien app background
 6. circle colored background in rank
-7. sqlite y firebase, funcionalidad de sync, comparar lista de fb con lista local y si son diff sincronizar
+8. image details ( (onPress) => zoom )
+10. firebase
+11. rank in details
+
+FUTURE FEATURE =>
+- Sqlite/isar: funcionalidad de sync
+    comparar lista de fb con lista local y si son diff sincronizar
+- Download image (onLongPress) => blur in all screen and make menu options 
+- Sources/licences screen 

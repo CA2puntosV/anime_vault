@@ -32,13 +32,6 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle rank = TextStyle(
-    fontFamily: font,
-    fontSize: 25,
-    fontWeight: FontWeight.bold,
-    color: AppColors.primary,
-  );
-
   static const TextStyle primaryTextButton = TextStyle(
     fontFamily: font,
     fontSize: 16,

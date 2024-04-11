@@ -1,14 +1,15 @@
-import 'package:anime_vault/src/models/anime_model.dart';
-import 'package:anime_vault/ui/views/details/details_screen.dart';
-import 'package:anime_vault/ui/views/init/init_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:anime_vault/ui/views/home/home_screen.dart';
 import 'package:anime_vault/ui/router/router_path.dart';
+import 'package:anime_vault/src/models/anime_model.dart';
+import 'package:anime_vault/ui/views/init/init_screen.dart';
+import 'package:anime_vault/ui/views/home/home_screen.dart';
 import 'package:anime_vault/src/providers/home_provider.dart';
+import 'package:anime_vault/src/providers/details_provider.dart';
+import 'package:anime_vault/ui/views/details/details_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   final args = settings.arguments;
@@ -43,7 +44,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _buildRoute(
         settings: settings,
         builder: ChangeNotifierProvider(
-          create: (_) => HomeProvider(),
+          create: (_) => DetailsProvider(),
           child: DetailsScreen(
             anime: map['anime'] as AnimeModel,
           ),
