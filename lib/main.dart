@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:anime_vault/firebase_options.dart';
 import 'package:anime_vault/ui/router/router_path.dart';
 import 'package:anime_vault/ui/router/router.dart' as router;
-import 'package:anime_vault/src/providers/animation_provider.dart';
+import 'package:anime_vault/src/providers/global_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider.value(
-          value: AnimationProvider(),
+          value: GlobalProvider(),
         ),
       ],
       child: const MyApp(),

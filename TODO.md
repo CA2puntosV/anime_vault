@@ -8,6 +8,8 @@
 8. image details ( (onPress) => zoom )
 10. firebase
 11. rank in details
+. shadow n bottom bar
+. fix nav bar funcionality
 
 FUTURE FEATURE =>
 - Sqlite/isar: funcionalidad de sync

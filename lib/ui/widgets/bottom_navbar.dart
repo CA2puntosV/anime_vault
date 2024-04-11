@@ -1,9 +1,18 @@
-import 'package:anime_vault/ui/shared/app_colors.dart';
-import 'package:anime_vault/ui/shared/assets/icons.dart';
 import 'package:flutter/material.dart';
 
+import 'package:anime_vault/ui/shared/app_colors.dart';
+import 'package:anime_vault/ui/shared/assets/icons.dart';
+import 'package:anime_vault/ui/shared/nav_bar_options.dart';
+
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({
+    super.key,
+    required this.selected,
+    required this.onSelectedChanged,
+  });
+
+  final String selected;
+  final Function(String) onSelectedChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +31,49 @@ class BottomNavBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _Icon(
-            icon: AppIcons.homeFill,
-            func: () {},
+            icon: selected == NavBarOptions.home['name']
+                ? AppIcons.homeFill
+                : AppIcons.homeOutline,
+            func: () {
+              onSelectedChanged(
+                NavBarOptions.home['name']!,
+              );
+
+              Navigator.pushReplacementNamed(
+                context,
+                NavBarOptions.home['path']!,
+              );
+            },
           ),
           _Icon(
-            icon: AppIcons.searhOutline,
-            func: () {},
+            icon: selected == NavBarOptions.search['name']
+                ? AppIcons.searchFill
+                : AppIcons.searhOutline,
+            func: () {
+              onSelectedChanged(
+                NavBarOptions.search['name']!,
+              );
+
+              Navigator.pushReplacementNamed(
+                context,
+                NavBarOptions.search['path']!,
+              );
+            },
           ),
           _Icon(
-            icon: AppIcons.bookmarkOutline,
-            func: () {},
+            icon: selected == NavBarOptions.bookmarks['name']
+                ? AppIcons.bookmarkFill
+                : AppIcons.bookmarkOutline,
+            func: () {
+              onSelectedChanged(
+                NavBarOptions.bookmarks['name']!,
+              );
+
+              Navigator.pushReplacementNamed(
+                context,
+                NavBarOptions.bookmarks['path']!,
+              );
+            },
           ),
         ],
       ),

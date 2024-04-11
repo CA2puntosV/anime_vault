@@ -8,6 +8,8 @@ import 'package:anime_vault/src/models/anime_model.dart';
 import 'package:anime_vault/ui/views/init/init_screen.dart';
 import 'package:anime_vault/ui/views/home/home_screen.dart';
 import 'package:anime_vault/src/providers/home_provider.dart';
+import 'package:anime_vault/src/providers/search_provider.dart';
+import 'package:anime_vault/ui/views/search/search_screen.dart';
 import 'package:anime_vault/src/providers/details_provider.dart';
 import 'package:anime_vault/ui/views/details/details_screen.dart';
 
@@ -35,6 +37,15 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: ChangeNotifierProvider(
           create: (_) => HomeProvider(),
           child: const HomeScreen(),
+        ),
+      );
+
+    case RouterPath.search:
+      return _buildRoute(
+        settings: settings,
+        builder: ChangeNotifierProvider(
+          create: (_) => SearchProvider(),
+          child: const SearchScreen(),
         ),
       );
 
