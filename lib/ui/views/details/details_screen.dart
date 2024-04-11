@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:anime_vault/ui/shared/ui_helpers.dart';
@@ -7,7 +6,7 @@ import 'package:anime_vault/ui/widgets/star_rating.dart';
 import 'package:anime_vault/src/models/anime_model.dart';
 import 'package:anime_vault/ui/shared/app_text_styles.dart';
 
-class DetailsScreen extends StatelessWidget {
+class DetailsScreen extends StatefulWidget {
   const DetailsScreen({
     super.key,
     required this.anime,
@@ -15,8 +14,35 @@ class DetailsScreen extends StatelessWidget {
 
   final AnimeModel anime;
 
-  //todo if is readmore load screen without stack
+  @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
 
+class _DetailsScreenState extends State<DetailsScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  bool loaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 900),
+    );
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {}
+      });
+
+    _controller.forward();
+  }
+
+  //TODO if is readmore load screen without stack
   @override
   Widget build(BuildContext context) {
     final Size screen = MediaQuery.of(context).size;
@@ -26,19 +52,26 @@ class DetailsScreen extends StatelessWidget {
       body: Stack(
         children: [
           Hero(
-            tag: '${anime.id}',
-            child: SizedBox(
-              height: screen.height * 0.65,
-              child: Image.network(
-                anime.largeImageUrl,
-                fit: BoxFit.cover,
-                width: screen.width,
-              ),
+            tag: '${widget.anime.id}',
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: screen.height * 0.65,
+                  child: Image.network(
+                    widget.anime.largeImageUrl,
+                    fit: BoxFit.cover,
+                    width: screen.width,
+                  ),
+                ),
+                const _Gradient(),
+              ],
             ),
           ),
-          const _Gradient(),
-          _AnimeInfo(
-            anime: anime,
+          FadeTransition(
+            opacity: _animation,
+            child: _AnimeInfo(
+              anime: widget.anime,
+            ),
           ),
         ],
       ),
