@@ -1,12 +1,11 @@
-import 'package:anime_vault/ui/shared/nav_bar_options.dart';
 import 'package:flutter/material.dart';
 
+import 'package:anime_vault/ui/router/router_path.dart';
+
 class GlobalProvider extends ChangeNotifier {
-  String selected = NavBarOptions.home['name']!;
+  String selected = RouterPath.home;
 
   void setSelected(String newValue) {
     selected = newValue;
-
-    notifyListeners();
   }
 }

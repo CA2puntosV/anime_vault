@@ -9,24 +9,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenLayout(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverPadding(
-              padding: const EdgeInsets.all(0.0),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate(
-                  <Widget>[
-                    const TopAnime(),
-                    const AnimeList(),
-                    const SizedBox(),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
+    return const ScreenLayout(
+      currentScreen: 'home',
+      body: Column(
+        children: [
+          TopAnime(),
+          AnimeList(),
+          SizedBox(),
+        ],
       ),
     );
   }

@@ -1,3 +1,6 @@
+import 'package:anime_vault/src/providers/auth_provider.dart';
+import 'package:anime_vault/ui/views/auth/login_screen.dart';
+import 'package:anime_vault/ui/views/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,6 +31,24 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: ChangeNotifierProvider(
           create: (_) => HomeProvider(),
           child: const InitScreen(),
+        ),
+      );
+
+    case RouterPath.login:
+      return _buildRoute(
+        settings: settings,
+        builder: ChangeNotifierProvider(
+          create: (_) => UserAuthProvider(),
+          child: const LoginScreen(),
+        ),
+      );
+
+    case RouterPath.register:
+      return _buildRoute(
+        settings: settings,
+        builder: ChangeNotifierProvider(
+          create: (_) => UserAuthProvider(),
+          child: const RegisterScreen(),
         ),
       );
 

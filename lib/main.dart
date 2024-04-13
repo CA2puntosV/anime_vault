@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Anime Vault',
-      initialRoute: RouterPath.home,
+      initialRoute: RouterPath.login,
       onGenerateRoute: router.generateRoute,
     );
   }

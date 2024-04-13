@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
 import 'package:anime_vault/ui/shared/app_colors.dart';
+import 'package:anime_vault/ui/router/router_path.dart';
 import 'package:anime_vault/ui/shared/assets/icons.dart';
-import 'package:anime_vault/ui/shared/nav_bar_options.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
     super.key,
     required this.selected,
-    required this.onSelectedChanged,
   });
 
   final String selected;
-  final Function(String) onSelectedChanged;
 
   @override
   Widget build(BuildContext context) {
+    void nav(String path) {
+      if (path != selected) {
+        Navigator.pushNamed(context, path);
+      }
+    }
+
     return Container(
       margin: const EdgeInsets.symmetric(
         vertical: 30,
@@ -31,50 +35,26 @@ class BottomNavBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _Icon(
-            icon: selected == NavBarOptions.home['name']
+            icon: selected == RouterPath.home
                 ? AppIcons.homeFill
                 : AppIcons.homeOutline,
-            func: () {
-              onSelectedChanged(
-                NavBarOptions.home['name']!,
-              );
-
-              Navigator.pushReplacementNamed(
-                context,
-                NavBarOptions.home['path']!,
-              );
-            },
+            func: () => nav(RouterPath.home),
           ),
           _Icon(
-            icon: selected == NavBarOptions.search['name']
+            icon: selected == RouterPath.search
                 ? AppIcons.searchFill
                 : AppIcons.searhOutline,
-            func: () {
-              onSelectedChanged(
-                NavBarOptions.search['name']!,
-              );
-
-              Navigator.pushReplacementNamed(
-                context,
-                NavBarOptions.search['path']!,
-              );
-            },
+            func: () => nav(RouterPath.search),
           ),
-          _Icon(
-            icon: selected == NavBarOptions.bookmarks['name']
-                ? AppIcons.bookmarkFill
-                : AppIcons.bookmarkOutline,
-            func: () {
-              onSelectedChanged(
-                NavBarOptions.bookmarks['name']!,
-              );
-
-              Navigator.pushReplacementNamed(
-                context,
-                NavBarOptions.bookmarks['path']!,
-              );
-            },
-          ),
+          // _Icon(
+          //   icon: selected == RouterPath.bookmarks
+          //       ? AppIcons.bookmarkFill
+          //       : AppIcons.bookmarkOutline,
+          //   func: () => Navigator.pushNamed(
+          //     context,
+          //     RouterPath.home,
+          //   ),
+          // ),
         ],
       ),
     );

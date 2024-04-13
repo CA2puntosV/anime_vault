@@ -18,6 +18,13 @@ class AppTextStyles {
     color: AppColors.white,
   );
 
+  static const TextStyle textFieldTitle = TextStyle(
+    fontFamily: font,
+    fontSize: 20,
+    color: AppColors.primary,
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle description = TextStyle(
     fontFamily: font,
     fontSize: 16,
