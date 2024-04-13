@@ -1,12 +1,25 @@
-import 'package:anime_vault/ui/shared/app_colors.dart';
-import 'package:anime_vault/ui/shared/assets/icons.dart';
 import 'package:flutter/material.dart';
 
+import 'package:anime_vault/ui/shared/app_colors.dart';
+import 'package:anime_vault/ui/router/router_path.dart';
+import 'package:anime_vault/ui/shared/assets/icons.dart';
+
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({
+    super.key,
+    required this.selected,
+  });
+
+  final String selected;
 
   @override
   Widget build(BuildContext context) {
+    void nav(String path) {
+      if (path != selected) {
+        Navigator.pushNamed(context, path);
+      }
+    }
+
     return Container(
       margin: const EdgeInsets.symmetric(
         vertical: 30,
@@ -22,17 +35,26 @@ class BottomNavBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _Icon(
-            icon: AppIcons.homeFill,
-            func: () {},
+            icon: selected == RouterPath.home
+                ? AppIcons.homeFill
+                : AppIcons.homeOutline,
+            func: () => nav(RouterPath.home),
           ),
           _Icon(
-            icon: AppIcons.searhOutline,
-            func: () {},
+            icon: selected == RouterPath.search
+                ? AppIcons.searchFill
+                : AppIcons.searhOutline,
+            func: () => nav(RouterPath.search),
           ),
-          _Icon(
-            icon: AppIcons.bookmarkOutline,
-            func: () {},
-          ),
+          // _Icon(
+          //   icon: selected == RouterPath.bookmarks
+          //       ? AppIcons.bookmarkFill
+          //       : AppIcons.bookmarkOutline,
+          //   func: () => Navigator.pushNamed(
+          //     context,
+          //     RouterPath.home,
+          //   ),
+          // ),
         ],
       ),
     );
@@ -58,7 +80,7 @@ class _Icon extends StatelessWidget {
       child: GestureDetector(
         onTap: func,
         child: Image.asset(
-         icon,
+          icon,
         ),
       ),
     );

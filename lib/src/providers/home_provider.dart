@@ -8,10 +8,10 @@ class HomeProvider extends ChangeNotifier {
     getTopAnime();
     getAnimeList();
   }
+  final AnimeRepository _animeRepo = AnimeRepository();
+
   List<AnimeModel> topAnime = [];
   List<AnimeModel> animeList = [];
-
-  final AnimeRepository _animeRepo = AnimeRepository();
 
   void getTopAnime() async {
     topAnime = await _animeRepo.getTopAnime();
@@ -23,5 +23,43 @@ class HomeProvider extends ChangeNotifier {
     animeList = await _animeRepo.getAnimeList();
 
     notifyListeners();
+  }
+
+  Widget fillStars(double rating) {
+    List<Widget> stars = [];
+
+    int wholeStars = rating.floor();
+
+    for (int i = 0; i < wholeStars; i++) {
+      stars.add(
+        const Icon(
+          Icons.star,
+          color: Colors.yellow,
+        ),
+      );
+    }
+
+    if (rating - wholeStars >= 0.5) {
+      stars.add(
+        const Icon(
+          Icons.star_half,
+          color: Colors.yellow,
+        ),
+      );
+      wholeStars++;
+    }
+    for (int i = wholeStars; i < 5; i++) {
+      stars.add(
+        const Icon(
+          Icons.star_border,
+          color: Colors.yellow,
+        ),
+      );
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: stars,
+    );
   }
 }

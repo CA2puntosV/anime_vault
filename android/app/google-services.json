@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "239650923783",
+    "project_id": "anime-vault-2ae90",
+    "storage_bucket": "anime-vault-2ae90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239650923783:android:61b93f70530d5168e111a2",
+        "android_client_info": {
+          "package_name": "com.devcae.anime_vault"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239650923783-gj3dff4msqben57gbqh6uj52dd2pe8vc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYUF3Rh_N7p9pMhge4BT2O02NqWqWh_o0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239650923783-gj3dff4msqben57gbqh6uj52dd2pe8vc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

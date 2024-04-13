@@ -1,12 +1,9 @@
 import 'package:anime_vault/src/models/genre_model.dart';
-import 'package:anime_vault/src/models/title_model.dart';
 
 class AnimeModel {
   final int id;
-  final String url;
   final Map<String, dynamic> images;
   final String title;
-  final List<Title> titles;
   final List<Genre> genres;
   final int chapters;
   final String status;
@@ -16,10 +13,8 @@ class AnimeModel {
 
   AnimeModel({
     required this.id,
-    required this.url,
     required this.images,
     required this.title,
-    required this.titles,
     required this.genres,
     required this.chapters,
     required this.status,
@@ -29,26 +24,34 @@ class AnimeModel {
   });
 
   factory AnimeModel.fromJson(Map<String, dynamic> json) {
-    final List<Title> titles = (json['titles'] as List? ?? [])
-        .map((title) => Title.fromJson(title))
-        .toList();
-        
     final List<Genre> genres = (json['genres'] as List? ?? [])
         .map((genre) => Genre.fromJson(genre))
         .toList();
 
     return AnimeModel(
       id: json['mal_id'] ?? 0,
-      url: json['url'] ?? '',
       images: json['images']['jpg'] ?? {},
       title: json['title'] ?? '',
-      titles: titles,
       genres: genres,
       chapters: json['chapters'] ?? 0,
       status: json['status'] ?? '',
       score: json['score'] ?? 0.0,
       rank: json['rank'] ?? 0,
       synopsis: json['synopsis'] ?? '',
+    );
+  }
+
+  factory AnimeModel.empty() {
+    return AnimeModel(
+      id: 0,
+      images: {},
+      title: '',
+      genres: [],
+      chapters: 0,
+      status: '',
+      score: 0.0,
+      rank: 0,
+      synopsis: '',
     );
   }
 
